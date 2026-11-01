@@ -1,0 +1,42 @@
+:root{--bg:#f4f6f8;--card:#fff;--ink:#1d2733;--mute:#5d6b7a;--line:#d9e0e7;--brand:#14506b;--brand2:#e9f2f6;--ok:#17794a;--bad:#b83227;--node:#bfe0ef;--src:#a8e0b5;--dst:#ffcf8a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Segoe UI",system-ui,Arial,sans-serif}
+header{padding:18px 20px 0;max-width:1200px;margin:auto}
+h1{margin:0;font:700 22px Georgia,"Times New Roman",serif}
+header p{margin:2px 0 12px;color:var(--mute)}
+nav{display:flex;gap:4px;overflow-x:auto;border-bottom:2px solid var(--line)}
+nav button{border:0;background:none;color:var(--mute);padding:10px 16px;font:600 14px inherit;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
+nav button.active{color:var(--brand);border-color:var(--brand)}
+main{max-width:1200px;margin:auto;padding:16px 20px 40px}
+
+.tab{display:none;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.tab.active{display:flex}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;flex:1 1 320px;min-width:0}
+.panel.big{flex:2 1 500px}
+.panel.full{flex:1 1 100%}
+h3{margin:0 0 8px;font-size:16px}
+textarea{width:100%;font:13px/1.5 Consolas,monospace;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:8px}
+
+.field{margin:10px 0}
+.lbl{display:block;font-weight:600;font-size:13px;margin-bottom:3px}
+
+/* Liste déroulante personnalisée */
+.dd{position:relative}
+.dd-btn{width:100%;text-align:left;padding:9px 10px;background:#fff;color:#000;border:1px solid var(--line);border-radius:6px;font:14px inherit;cursor:pointer}
+.dd-list{position:absolute;left:0;right:0;top:100%;z-index:50;max-height:220px;overflow:auto;list-style:none;margin:3px 0 0;padding:4px;background:#fff;color:#000;border:1px solid var(--brand);border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.dd-list li{padding:7px 10px;border-radius:4px;cursor:pointer}
+.dd-list li:hover{background:var(--brand2)}
+.dd-list li.on{background:var(--brand);color:#fff}
+
+button.act{background:var(--brand);color:#fff;border:0;border-radius:6px;padding:9px 14px;margin:4px 6px 4px 0;font:600 14px inherit;cursor:pointer}
+button.act.alt{background:var(--brand2);color:var(--brand);border:1px solid var(--line)}
+.hint{color:var(--mute);font-size:13px;margin:6px 0}
+svg{width:100%;height:auto;background:var(--bg);border-radius:6px;display:block}
+svg text{fill:var(--ink)}
+.res{border-left:4px solid var(--brand);background:var(--brand2);padding:8px 12px;margin:10px 0;border-radius:0 6px 6px 0}
+.ok{color:var(--ok);font-weight:700}
+.bad{color:var(--bad);font-weight:700}
+.scroll{overflow:auto;max-height:280px}
+table{border-collapse:collapse;margin:8px 0;width:100%}
+td,th{border:1px solid var(--line);padding:5px 9px;font-size:13px;text-align:left}
+th{background:var(--brand2)}

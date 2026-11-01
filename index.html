@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini-projet 8 – Plus court chemin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Mini-projet 8 : Recherche du plus court chemin</h1>
+  <p>Dijkstra et Bellman-Ford, implémentés à la main</p>
+  <nav id="tabs">
+    <button data-tab="graph" class="active">Graphe</button>
+    <button data-tab="run">Exécution</button>
+    <button data-tab="compare">Comparaison</button>
+    <button data-tab="negative">Poids négatifs</button>
+    <button data-tab="about">Théorie</button>
+  </nav>
+</header>
+
+<main>
+  <!-- Fenêtre 1 : Graphe -->
+  <section id="graph" class="tab active">
+    <div class="panel">
+      <h3>Arcs du graphe</h3>
+      <p class="hint">Une ligne par arc : départ arrivée poids. Modifiez puis cliquez sur « Appliquer ».</p>
+      <textarea id="edgesInput" rows="16"></textarea>
+
+      <div class="field">
+        <span class="lbl">Source</span>
+        <div class="dd">
+          <button type="button" class="dd-btn" id="srcBtn"></button>
+          <ul class="dd-list" id="srcList" hidden></ul>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Destination</span>
+        <div class="dd">
+          <button type="button" class="dd-btn" id="dstBtn"></button>
+          <ul class="dd-list" id="dstList" hidden></ul>
+        </div>
+      </div>
+
+      <button class="act" id="applyGraph">Appliquer</button>
+      <p id="graphInfo" class="hint"></p>
+    </div>
+    <div class="panel big">
+      <svg id="svg1" viewBox="0 0 700 450"></svg>
+      <p class="hint">Vert : source. Orange : destination.</p>
+    </div>
+  </section>
+
+  <!-- Fenêtre 2 : Exécution -->
+  <section id="run" class="tab">
+    <div class="panel">
+      <button class="act" id="runDij">Lancer Dijkstra</button>
+      <button class="act alt" id="runBF">Lancer Bellman-Ford</button>
+      <div id="runOut" class="hint">Choisissez un algorithme pour voir le chemin, le coût et le temps.</div>
+      <div id="stepsOut" class="scroll"></div>
+    </div>
+    <div class="panel big"><svg id="svg2" viewBox="0 0 700 450"></svg></div>
+  </section>
+
+  <!-- Fenêtre 3 : Comparaison -->
+  <section id="compare" class="tab">
+    <div class="panel full">
+      <h3>Comparaison sur le graphe courant</h3>
+      <button class="act" id="runCmp">Comparer</button>
+      <div id="cmpOut"></div>
+    </div>
+    <div class="panel full">
+      <h3>Performances sur graphes aléatoires</h3>
+      <button class="act" id="runBench">Lancer le benchmark</button>
+      <div id="benchOut"></div>
+    </div>
+  </section>
+
+  <!-- Fenêtre 4 : Poids négatifs -->
+  <section id="negative" class="tab">
+    <div class="panel">
+      <button class="act alt case" data-case="pos">Cas 1 : poids ≥ 0</button>
+      <button class="act alt case" data-case="neg">Cas 2 : poids négatif</button>
+      <button class="act alt case" data-case="cyc">Cas 3 : cycle négatif</button>
+      <div id="negOut" class="hint">Choisissez un cas.</div>
+    </div>
+    <div class="panel big"><svg id="svg3" viewBox="0 0 700 450"></svg></div>
+  </section>
+
+  <!-- Fenêtre 5 : Théorie -->
+  <section id="about" class="tab">
+    <div class="panel full">
+      <h3>Synthèse</h3>
+      <table>
+        <tr><th>Situation</th><th>Dijkstra</th><th>Bellman-Ford</th></tr>
+        <tr><td>Poids ≥ 0</td><td>Valide</td><td>Valide</td></tr>
+        <tr><td>Poids négatifs sans cycle négatif</td><td>Non valide</td><td>Valide</td></tr>
+        <tr><td>Cycle négatif accessible</td><td>Non valide</td><td>Détecte le cycle</td></tr>
+      </table>
+      <h3>Complexité</h3>
+      <ul>
+        <li>Dijkstra : O(n²) avec matrice, O(m log n) avec tas binaire</li>
+        <li>Bellman-Ford : O(nm) avec listes, O(n³) avec matrice</li>
+      </ul>
+      <p>Dijkstra choisit le sommet de plus petite distance provisoire puis relâche ses arcs. Bellman-Ford relâche tous les arcs n−1 fois, puis fait un tour de plus pour détecter un cycle négatif. Il fonctionne avec des poids négatifs à condition qu'aucun cycle négatif ne soit accessible depuis la source.</p>
+    </div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
